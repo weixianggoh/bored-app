@@ -1,12 +1,12 @@
-import createPersistedState from "vuex-persistedstate";
+import createPersistedState from 'vuex-persistedstate'
 
 export default function ({ store }) {
-  let storage = localStorage.getItem("bored");
+  let storage = localStorage.getItem('bored')
 
   window.onNuxtReady(() => {
     createPersistedState({
-      key: "bored",
-      paths: []
-    })(store);
-  });
+      key: 'bored',
+      paths: [],
+    })(store)
+  })
 }
