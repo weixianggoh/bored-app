@@ -9,7 +9,9 @@
       Next
     </a-button>
 
-    <a-list item-layout="horizontal" :data-source="history">
+
+
+    <a-list item-layout="horizontal" :data-source="history" style="margin-top: 50px">
       <a-list-item slot="renderItem" slot-scope="item, index"
                    style="padding: 10px"
                    :style="customBgColor(item.type)"
