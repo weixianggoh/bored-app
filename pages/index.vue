@@ -10,7 +10,11 @@
     </a-button>
 
     <a-list item-layout="horizontal" :data-source="history">
-      <a-list-item slot="renderItem" slot-scope="item, index" style="padding: 10px">
+      <a-list-item slot="renderItem" slot-scope="item, index"
+                   style="padding: 10px"
+                   :style="customBgColor(item.type)"
+      >
+
         <a-list-item-meta>
           <a slot="title">{{ item.activity }}</a>
           <div slot="description">RM{{ item.price }}</div>
@@ -31,6 +35,9 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
+  data: function () {
+    return {}
+  },
   computed: {
     ...mapGetters("history", ["history"]),
 
@@ -52,6 +59,47 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    customBgColor(type){
+
+      // ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]
+
+      let color = "#9cff9d"
+      switch(type) {
+        case "education":
+          color = "#fcba03"
+          break;
+        case "recreational":
+          color = "#79adac"
+          break;
+        case "social":
+          color = "#9cd9ff"
+          break;
+        case "diy":
+          color = "#d1d1ff"
+          break;
+        case "charity":
+          color = "#c5ff9c"
+          break;
+        case "cooking":
+          color = "#7a8eff"
+          break;
+        case "relaxation":
+          color = "#d49633"
+          break;
+        case "music":
+          color = "#21526e"
+          break;
+        case "busywork":
+          color = "#376e21"
+          break;
+        default:
+          color = "#9cff9d"
+      }
+
+      return {
+        backgroundColor: color
+      }
     }
   }
 }
